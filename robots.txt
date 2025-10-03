@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://secureconnect-verified-search.github.io/Dr.-Frederick-Morgan-Trauma-Orthopedic-Surgeon/sitemap.xml

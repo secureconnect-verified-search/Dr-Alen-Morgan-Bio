@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Frederick Alen Morgan, Trauma Orthopedic Surgeon</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ===== General Styles ===== */
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+  background: #0b3d91;
+  color: #fff;
+  padding: 25px 20px;
+  text-align: center;
+  position: sticky;
+  top:0;
+  z-index:1000;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.5rem;
+  margin-bottom:10px;
+}
+nav a {
+  color: #fff;
+  margin: 0 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+nav a:hover { color: #d4af37; letter-spacing: 1px; }
+
+/* ===== Hero Section ===== */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('assets/images/hospital1.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11,61,145,0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+.hero-content h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+.hero-content p {
+  color: #ffd700;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  opacity: 0;
+  animation: fadeIn 1.6s forwards;
+}
+.hero-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  background: #ffd700;
+  color: #0b3d91;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+.hero-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ===== Section Styling ===== */
+section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  color: #0b3d91;
+  border-bottom: 3px solid #d4af37;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+/* ===== Humanitarian Button ===== */
+.humanitarian-btn {
+  display: inline-block;
+  background: #0b3d91;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+  margin-bottom: 25px;
+}
+.humanitarian-btn:hover {
+  background: #d4af37;
+  color: #0b3d91;
+  transform: translateY(-3px);
+}
+
+/* ===== Profile ===== */
+.profile {
+  width: 220px;
+  height: 220px;
+  float: left;
+  margin-right: 30px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.profile:hover { transform: scale(1.05); }
+
+/* ===== Cards ===== */
+.hospital-info, .contact-box {
+  background: linear-gradient(145deg, #e0f0ff, #ffffff);
+  border-left: 6px solid #d4af37;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.hospital-info:hover, .contact-box:hover { transform: translateY(-6px); }
+
+/* ===== Gallery ===== */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+.gallery-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+.gallery-container img:hover { transform: scale(1.05); }
+
+/* ===== Contact Boxes ===== */
+#contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+.contact-box {
+  flex: 1 1 calc(33% - 20px);
+  text-align: center;
+}
+.contact-box h3 { font-family: 'Merriweather', serif; color: #0b3d91; margin-bottom: 12px; }
+.contact-box p, .contact-box a { color: #333; text-decoration: none; font-weight: 500; font-size: 1rem; margin-bottom: 8px; }
+.contact-box a:hover { color: #d4af37; }
+
+/* ===== Footer ===== */
+footer {
+  background: #0b3d91;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn { to { opacity:1; } }
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .profile { float:none; display:block; margin:auto; margin-bottom:20px;}
+  .gallery-container { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .contact-box { flex:1 1 100%; }
+  .hero-content h1 { font-size:2rem; }
+  .hero-content p { font-size:1.2rem; }
+  .hero-btn { padding:12px 25px; font-size:1rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dr. Frederick Alen Morgan, Trauma Orthopedic Surgeon</h1>
+  <nav>
+    <a href="professional.html">Professional</a>
+    <a href="humanitarian.html">Humanitarian Work</a>
+    <a href="activities.html">Activities</a>
+    <a href="contact.html">Contacts</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Precision. Life-Saving Expertise. Trauma Orthopedics at the Highest Level.</h1>
+      <p>Restoring Mobility and Function for Complex Injuries Worldwide</p>
+      <a href="#contacts" class="hero-btn">Request Trauma Consultation</a>
+    </div>
+  </div>
+</section>
+
+<section id="hospital" class="hospital-info">
+  <h2>Bayshore Private Hospital – Tampa, Florida</h2>
+  <img src="assets/images/hospital11.jpg" alt="Bayshore Private Hospital" class="profile">
+  <p>
+   <p>
+  <strong>Dr. Frederick Alen Morgan</strong> is a board-certified <strong>Orthopedic Trauma Surgeon</strong> and consultant with the 
+  <strong>Bayshore Medical Group</strong>, providing specialized surgical expertise across several leading healthcare institutions in Tampa.  
+  With active consulting privileges at <strong>Tampa General Hospital</strong> and <strong>St. Joseph’s Hospital</strong>,  
+  Dr. Morgan delivers advanced orthopedic and trauma care within collaborative, hospital-based settings—focusing on precision surgery,  
+  evidence-based treatment, and compassionate, patient-centered recovery.  
+  Operating exclusively through his hospital affiliations, Dr. Morgan serves patients referred through these premier facilities rather than a single private office location.
+</p>
+  <p>
+    As a leading regional center for <strong>orthopedic trauma and reconstructive surgery</strong>, Bayshore Private Hospital houses 
+    advanced trauma suites, hybrid operating theaters, and a 24/7 critical care wing supported by 
+    multidisciplinary specialists. The hospital’s <strong>Comprehensive Trauma Program</strong> is accredited by 
+    the <strong>American College of Surgeons</strong> and is renowned for its rapid-response surgical teams and 
+    cutting-edge imaging systems that facilitate precision in complex cases.
+  </p>
+  <p>
+    <strong>Dr. Frederick Alen Morgan</strong> serves as a consulting orthopedic trauma surgeon under locum tenens 
+    appointments, bringing unparalleled expertise in the management of <em>complex fractures</em>, <em>limb salvage</em>, 
+    <em>polytrauma</em>, and <em>revision reconstructive procedures</em>. His presence elevates Bayshore’s trauma division, 
+    providing advanced operative techniques and leadership in surgical education.
+  </p>
+  <p>
+    The hospital also partners with <strong>Johns Hopkins All Children’s</strong> and <strong>University of South Florida Health</strong> 
+    for collaborative trauma research and continuing education, ensuring the integration of academic insight with clinical excellence.
+  </p>
+  <p>
+    Beyond its surgical prowess, Bayshore offers a holistic healing environment — including ocean-view recovery suites, 
+    private concierge services, physiotherapy and hydrotherapy centers, and personalized wellness programs. 
+    Patients and families receive dedicated support from multilingual care teams, embodying the hospital’s philosophy: 
+    <strong>“Healing the body, uplifting the spirit.”</strong>
+  </p>
+</section>
+
+<section id="bio">
+  <h2>Bio</h2>
+  <img src="assets/images/frederick.jpg" alt="Dr. Frederick Alen Morgan" class="profile">
+  <section id="bio" class="card">
+  <div class="bio-content">
+    <p>
+      <strong>Dr. Frederick Alen Morgan</strong> is an internationally recognized trauma orthopedic surgeon specializing in restoring mobility and function in the most challenging injuries worldwide. His expertise spans complex fractures, limb salvage, multi-system trauma interventions, and joint reconstruction.
+    </p>
+    <p>
+      With over 15 years of high-stakes surgical experience, he has led life-saving procedures in conflict zones, disaster areas, and advanced trauma centers. He has trained hundreds of surgeons globally in advanced trauma care, limb reconstruction, and complex revision surgeries — earning a reputation for succeeding where others cannot.
+    </p>
+    <p>
+      Internationally revered by colleagues across continents, he has served as a visiting consultant and trainer in top medical institutions worldwide, organizing advanced surgical workshops and international master classes attended by elite surgeons seeking to refine their skills.
+    </p>
+    <p>
+      Known for his original and highly specialized approach to limb preservation and joint replacement, Dr. Morgan has pioneered innovative techniques in minimally invasive orthopedic surgery, cartilage repair, and prosthetic integration. His work has been published in prestigious international journals, becoming a reference point in the field of mobility restoration and patient-centered recovery.
+    </p>
+    <p>
+      His humanitarian missions with <strong>Médecins Sans Frontières (MSF)</strong>, the <strong>United Nations (UN)</strong>, and the <strong>International Committee of the Red Cross (ICRC)</strong> reflect a lifelong dedication to providing urgent, high-quality trauma care where it is needed most. He also serves as a global advisor for the <strong>World Health Organization (WHO)</strong> on disaster trauma readiness.
+    </p>
+    <p>
+      Beyond the operating room, Dr. Morgan’s passion for humanitarian medicine has taken him across borders — from conflict zones to underserved rural communities. He sees surgery not only as a science but as an art form rooted in restoring dignity through mobility. This same philosophy fuels his deep interest in design, architecture, and contemporary art, which he considers essential sources of inspiration for both his medical and personal life.
+    </p>
+    <p>
+      A committed traveler without borders, Dr. Morgan balances his professional life with a love for exploration, immersing himself in diverse cultures while sharing his expertise wherever the need is greatest. He currently carries out his clinical activity across multiple international hospitals, maintaining a base of operations in the United States, with close collaborations in Europe, Africa, and Asia.
+    </p>
+    <p>
+      On the personal front, Dr. Morgan was previously married to <strong>Jannie Goodman</strong>, with the union concluding in divorce nine years ago; the couple had no offspring. With an estimated estate valued at <strong>$7 million</strong>, he has accrued his wealth through a succession of high-profile clinical engagements and consultancy roles. Outside the operating theater, he cultivates interests in contemporary art curation, nautical pursuits, and the mentorship of emerging surgical talent.
+    </p>
+  </div>
+</section>
+
+</section>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-container">
+      <img src="assets/images/hospital1.jpg" alt="Trauma OR 1">
+      <img src="assets/images/hospital2.jpg" alt="Field Hospital Setup">
+      <img src="assets/images/hospital3.jpg" alt="Surgical Workshop">
+  </div>
+</section>
+
+<section id="professional">
+  <h2>Professional Curriculum & Affiliations</h2>
+  <ul>
+    <li>Fellow, <strong>American Academy of Orthopaedic Surgeons (AAOS)</strong></li>
+    <li>Member, <strong>Orthopaedic Trauma Association (OTA)</strong></li>
+    <li>Member, <strong>AO Trauma International</strong></li>
+    <li>Consultant, <strong>World Health Organization Emergency Medical Teams</strong></li>
+    <li>Contributor, <strong>International Society of Orthopaedic Surgery and Traumatology (SICOT)</strong></li>
+    <li>Advisor, <strong>Red Cross War Surgery Program</strong></li>
+    <li>Fellowship: Orthopedic Trauma & Complex Limb Reconstruction, Case Western Reserve University</li>
+  </ul>
+</section>
+
+<section id="humanitarian" class="card">
+  <h2>Humanitarian Work Overview</h2>
+  <p>For over a decade, Dr. Morgan has dedicated his surgical expertise to global humanitarian service — saving lives in crisis zones, training surgeons, and rebuilding trauma systems in underserved regions.</p>
+
+  <ul>
+    <li><strong>Médecins Sans Frontières (MSF):</strong> Emergency orthopedic trauma care in conflict zones</li>
+    <li><strong>United Nations:</strong> International trauma missions and disaster response operations</li>
+    <li><strong>International Committee of the Red Cross (ICRC):</strong> Battlefield and crisis injury management</li>
+    <li><strong>World Health Organization (WHO):</strong> Global disaster trauma care advisory and training</li>
+    <li><strong>Global Disaster Relief Network:</strong> Rapid deployment for earthquake, flood, and war injuries</li>
+  </ul>
+
+  <a href="humanitarian.html" class="humanitarian-btn">View Full Humanitarian Work →</a>
+</section>
+
+
+<section id="activities">
+  <h2>Activities & Leadership</h2>
+  <ul>
+    <li>International speaker on trauma orthopedic surgery</li>
+    <li>Author of landmark studies in complex fracture repair</li>
+    <li>Organizer of global surgical workshops</li>
+    <li>Advocate for trauma recovery and limb salvage</li>
+  </ul>
+</section>
+
+<section id="contacts">
+  <div class="contact-box">
+    <h3>Email</h3>
+    <p>office.frederickmorganmd@mail.com</p>
+  </div>
+  <div class="contact-box">
+    <h3>Phone</h3>
+    <p>+1 (786) 757-7079</p>
+  </div>
+  <div class="contact-box">
+    <h3>Address</h3>
+    <p>123 Bayshore Ave, Suite 200</p>
+    <p>Tampa, FL 33602, USA</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; <span id="year"></span> Dr. Frederick Alen Morgan</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

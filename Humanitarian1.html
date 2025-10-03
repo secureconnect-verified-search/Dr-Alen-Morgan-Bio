@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dr. Frederick Morgan, Trauma Orthopedic Surgeon</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nav:#0b3d91;
+    --gold:#d4af37;
+    --muted:#f5f7fa;
+    --card:#ffffff;
+    --text:#222;
+    --accent:#0b3d91;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"Open Sans",sans-serif;margin:0;background:var(--muted);color:var(--text);-webkit-font-smoothing:antialiased}
+  header{background:var(--nav);color:#fff;padding:22px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 6px 18px rgba(0,0,0,0.18)}
+  header .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  header h1{font-family:'Merriweather',serif;font-size:1.45rem;margin:0}
+  nav a{color:#fff;margin-left:18px;text-decoration:none;font-weight:600;opacity:.95}
+  nav a:hover{color:var(--gold)}
+  /* Hero */
+  .hero{height:72vh;min-height:520px;background:url('assets/images/hero-hospital.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,61,145,0.55) 0%, rgba(4,20,45,0.3) 60%)}
+  .hero-inner{position:relative;z-index:2;color:#fff;text-align:center;padding:20px;max-width:1000px}
+  .tagline{font-family:'Merriweather',serif;font-size:2.1rem;margin-bottom:12px;letter-spacing:.2px}
+  .subtitle{color:var(--gold);font-weight:600;font-size:1.05rem;margin-bottom:22px}
+  .cta{display:inline-block;background:var(--gold);color:var(--nav);padding:12px 26px;border-radius:40px;text-decoration:none;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+  .cta.secondary{background:transparent;border:2px solid rgba(255,255,255,0.14);color:#fff;margin-left:12px}
+  /* Container sections */
+  .container{max-width:1200px;margin:-70px auto 40px;padding:0 20px}
+  .card{background:var(--card);border-radius:14px;padding:28px;box-shadow:0 10px 30px rgba(2,12,40,0.08);margin-bottom:28px;overflow:hidden}
+  .row{display:flex;gap:24px;flex-wrap:wrap}
+  .col-3{flex:0 0 260px}
+  .col{flex:1}
+  /* Profile */
+  .profile-photo{width:220px;height:220px;border-radius:14px;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,0.15)}
+  .bio h2{font-family:'Merriweather',serif;color:var(--accent);margin:0 0 8px 0}
+  .bio p{margin:0 0 12px 0;line-height:1.6;color:#333}
+  .badge{display:inline-block;padding:8px 12px;background:linear-gradient(90deg,#e9f3ff,#fff);border-left:4px solid var(--gold);border-radius:40px;font-weight:600;margin-right:8px}
+  /* Timeline */
+  .timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:12px}
+  .timeline .item{padding:18px;background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;border-left:4px solid var(--gold)}
+  .timeline .year{font-weight:700;color:var(--nav);margin-bottom:6px}
+  .timeline p{margin:0;font-size:.95rem;color:#444}
+  /* Affiliations / sponsors */
+  .logos{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .logos img{height:44px;object-fit:contain;filter:grayscale(0.02);opacity:.95}
+  .sponsor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;align-items:center}
+  .sponsor{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 8px 20px rgba(2,12,40,0.04)}
+  /* Stats */
+  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+  .stat{flex:1;min-width:160px;background:linear-gradient(180deg,#0b3d91,#08306a);color:#fff;padding:18px;border-radius:10px;text-align:center}
+  .stat h3{margin:0;font-size:1.6rem}
+  .stat p{margin:6px 0 0;font-size:.95rem;opacity:.9}
+  /* Testimonials */
+  .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .testimonial{background:linear-gradient(180deg,#fff,#fbfdff);padding:18px;border-radius:10px;border-left:4px solid var(--accent);box-shadow:0 8px 18px rgba(0,0,0,0.04)}
+  .testimonial p{margin:0 0 8px 0}
+  .testimonial cite{display:block;font-weight:600;color:#0b3d91}
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+  .contact-form input,.contact-form textarea{width:100%;padding:12px;border:1px solid #e6eef9;border-radius:8px;margin-bottom:10px;font-size:0.95rem}
+  .contact-form button{background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+  .mini{font-size:.92rem;color:#666}
+  footer{background:var(--nav);color:#fff;padding:22px 18px;text-align:center;margin-top:28px}
+  a.back-link{display:inline-block;margin-top:6px;color:var(--nav);background:#fff;padding:8px 12px;border-radius:999px;text-decoration:none}
+  /* Responsive */
+  @media(max-width:920px){.contact-grid{grid-template-columns:1fr}}
+  @media(max-width:720px){header .wrap{flex-direction:column;align-items:flex-start} .tagline{font-size:1.6rem}.hero{height:56vh}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Dr. Frederick Morgan, MD</h1>
+    <nav aria-label="Primary">
+      <a href="#bio">Bio</a>
+      <a href="#professional">Professional</a>
+      <a href="humanitarian.html">Humanitarian</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" role="banner" aria-label="Hero">
+  <div class="hero-inner">
+    <div class="tagline">Precision. Life-Saving Expertise. Trauma Orthopedics at the Highest Level.</div>
+    <div class="subtitle">Restoring mobility and dignity after catastrophic injury — global trauma leadership.</div>
+    <a class="cta" href="#contact">Request Trauma Consultation</a>
+    <a class="cta secondary" href="humanitarian.html">Explore Humanitarian Work</a>
+  </div>
+</section>
+
+<main class="container" role="main">
+
+  <!-- PROFILE -->
+  <article class="card row" id="bio" aria-labelledby="bioTitle">
+    <div class="col-3">
+      <img class="profile-photo" src="assets/images/frederick.jpg" alt="Dr. Frederick Morgan portrait">
+      <div style="margin-top:12px">
+        <span class="badge">FAAOS</span>
+        <span class="badge">AO Trauma</span>
+      </div>
+    </div>
+    <div class="col">
+      <h2 id="bioTitle">Dr. Frederick Morgan — Trauma Orthopedic Surgeon</h2>
+      <p class="mini">Board-certified trauma orthopedic surgeon with more than 15 years in high-stakes operative trauma care, limb salvage, and multi-system reconstruction. Clinical base in Tampa, FL, with permanent international surgical commitments.</p>
+      <div style="margin-top:14px">
+        <p>Dr. Morgan has led life-saving orthopedic procedures in metropolitan trauma centers, disaster zones, and conflict field hospitals. He combines technical precision with humanitarian commitment — training local surgical teams, implementing trauma systems, and advancing limb salvage techniques.</p>
+        <p>He is founder of the Bayshore Private Trauma Center and director of the Morgan Global Surgical Fellowship for early-career trauma surgeons.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- TIMELINE + STATS -->
+  <section class="card" id="legacy" aria-labelledby="legacyTitle">
+    <h2 id="legacyTitle">A 10-Year Legacy</h2>
+    <div class="row">
+      <div class="col">
+        <div class="timeline" aria-hidden="false">
+          <div class="item"><div class="year">2015</div><p>Founded Bayshore Private Trauma Center, Tampa — an advanced trauma referral practice and fellowship site.</p></div>
+          <div class="item"><div class="year">2016</div><p>Deployed with MSF to Nepal earthquake relief — led orthopedic reconstruction unit.</p></div>
+          <div class="item"><div class="year">2018</div><p>AO Foundation recognition — Global Humanitarian Surgeon Award.</p></div>
+          <div class="item"><div class="year">2020</div><p>Launched "Mobility for All Initiative" — pro bono trauma surgeries for veterans and underserved patients.</p></div>
+          <div class="item"><div class="year">2021</div><p>Growth of fellowship program — international fellows trained in limb salvage and trauma reconstruction.</p></div>
+          <div class="item"><div class="year">2023</div><p>WHO commended contributions to trauma response standards and emergency surgical teams.</p></div>
+          <div class="item"><div class="year">2024</div><p>Expanded mobile surgical camps across East Africa and the Caribbean.</p></div>
+          <div class="item"><div class="year">2025</div><p>Established Morgan Global Surgical Fellowship — formal curriculum and international rotation sites.</p></div>
+        </div>
+      </div>
+
+      <aside class="col-3">
+        <div class="stats">
+          <div class="stat"><h3>10,000+</h3><p>Surgeries performed</p></div>
+          <div class="stat"><h3>30+</h3><p>Missions & deployments</p></div>
+          <div class="stat"><h3>500+</h3><p>Surgeons trained</p></div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3 style="margin-bottom:8px;font-family:'Merriweather',serif;color:var(--accent)">Select Affiliations</h3>
+          <div class="logos" aria-hidden="true">
+            <img src="assets/logos/aaos.png" alt="AAOS logo">
+            <img src="assets/logos/ota.png" alt="OTA logo">
+            <img src="assets/logos/ao.png" alt="AO logo">
+            <img src="assets/logos/who.png" alt="WHO logo">
+            <img src="assets/logos/msf.png" alt="MSF logo">
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL & SPONSORS -->
+  <section class="card" id="professional" aria-labelledby="professionalTitle">
+    <h2 id="professionalTitle">Professional Curriculum & Partners</h2>
+    <div class="row">
+      <div class="col">
+        <ul style="margin:0 0 8px 18px;color:#333;">
+          <li>MD, Ohio State University College of Medicine — 2009</li>
+          <li>Residency, Orthopedic Surgery — Cleveland Clinic — 2014</li>
+          <li>Fellowship, Orthopedic Trauma & Complex Limb Reconstruction — Case Western Reserve — 2016</li>
+          <li>Certifications: ATLS, AO Trauma, Advanced Limb Salvage Techniques</li>
+          <li>Fellow, American Academy of Orthopaedic Surgeons (FAAOS)</li>
+          <li>Member, Orthopaedic Trauma Association (OTA) & SICOT</li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h3 style="margin-top:0;font-family:'Merriweather',serif;color:var(--accent)">Sponsors & Supporters</h3>
+        <div class="sponsor-grid" aria-hidden="true">
+          <div class="sponsor"><img src="assets/logos/jnj.png" alt="Johnson & Johnson"></div>
+          <div class="sponsor"><img src="assets/logos/zimmer.png" alt="Zimmer Biomet"></div>
+          <div class="sponsor"><img src="assets/logos/depuy.png" alt="DePuy Synthes"></div>
+          <div class="sponsor"><img src="assets/logos/medtronic.png" alt="Medtronic"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION STATEMENT -->
+  <section class="card">
+    <h2>Mission & Movement</h2>
+    <p style="margin-bottom:8px">To restore dignity through mobility. We train local surgical teams, deploy rapid trauma response units, and champion evidence-based trauma system improvements that create sustainable, measurable impact.</p>
+    <p class="mini">Key pillars: Clinical Excellence · Education & Fellowship · Rapid Response · Research & Innovation</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="card" id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial"><p>“Dr. Morgan saved my leg — and my life. The care, honesty, and skill were beyond anything I expected.”</p><cite>— James P., trauma survivor</cite></div>
+      <div class="testimonial"><p>“After Dr. Morgan’s training, our trauma unit's outcomes improved dramatically. His teaching is precise and practical.”</p><cite>— Dr. Elise Tan, Hospital Director</cite></div>
+      <div class="testimonial"><p>“His mobile surgical camp changed our community’s access to emergency care.”</p><cite>— Nguyen Provincial Hospital</cite></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card" id="contact">
+    <h2>Contact & Referral</h2>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <p class="mini">For urgent trauma referrals, international partnerships, or fellowship inquiries, please complete the form below. For emergencies, call the direct line.</p>
+        <input type="text" placeholder="Full name" aria-label="Full name">
+        <input type="email" placeholder="Email address" aria-label="Email">
+        <input type="tel" placeholder="Phone (with country code)" aria-label="Phone">
+        <textarea rows="5" placeholder="Brief description of case / inquiry" aria-label="Message"></textarea>
+        <button type="button">Submit Inquiry</button>
+      </div>
+
+      <aside style="background:linear-gradient(180deg,#fff,#fbfdff);padding:18px;border-radius:10px">
+        <h3 style="font-family:'Merriweather',serif;color:var(--accent);margin-top:0">Practice & Emergency</h3>
+        <p style="margin:0 0 8px">Bayshore Private Trauma Center<br>123 Bayshore Ave, Suite 200<br>Tampa, FL 33602</p>
+        <p style="margin:0 0 10px">Phone (referrals): <strong>+1 (813) 555-0100</strong></p>
+        <p style="margin:0 0 12px">Email: <a href="mailto:info@drfrederickmorgan.com">info@drfrederickmorgan.com</a></p>
+        <a class="back-link" href="humanitarian.html">Explore Humanitarian Programs →</a>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto">© <span id="year"></span> Dr. Frederick Morgan — Trauma Orthopedic Surgery · <small>Trusted partner: WHO · MSF · AO Trauma · AAOS</small></div>
+</footer>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

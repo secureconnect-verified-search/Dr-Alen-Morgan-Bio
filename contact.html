@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Dr. Frederick Morgan</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #002244;
+      padding: 0.75rem 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: 0.3s;
+      background: #004080;
+      padding: 8px 14px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background: #0059b3;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 150px;
+    }
+
+    button {
+      background: #003366;
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0059b3;
+    }
+
+    #formStatus {
+      margin-top: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dr. Frederick Alen Morgan, Trauma Orthopedic Surgeon</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="professional.html">Professional</a>
+    <a href="humanitarian.html">Humanitarian</a>
+    <a href="activities.html">Activities</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Get in Touch</h2>
+    <!-- Formspree Contact Form -->
+    <form id="contactForm" action="https://formspree.io/f/xyznjnqp" method="POST">
+      
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="Reason for your message" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+
+      <p id="formStatus"></p>
+    </form>
+
+    <div class="contact-info">
+      <p><strong>Office:</strong> Dr. Morgan Tampa, FL</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Dr. Frederick Alen Morgan | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const action = form.action;
+
+      status.textContent = "Sending...";
+
+      try {
+        let response = await fetch(action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          status.style.color = "green";
+          status.textContent = "✅ Message sent successfully!";
+          form.reset();
+        } else {
+          status.style.color = "red";
+          status.textContent = "❌ Something went wrong. Please try again.";
+        }
+      } catch (error) {
+        status.style.color = "red";
+        status.textContent = "❌ Network error. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
